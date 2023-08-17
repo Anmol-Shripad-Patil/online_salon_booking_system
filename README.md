@@ -1,1 +1,1 @@
-# online_salon_booking_system
+# Online Salon Booking System
