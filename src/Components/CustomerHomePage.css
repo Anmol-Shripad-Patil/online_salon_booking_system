@@ -1,0 +1,60 @@
+.customer-home-container 
+{
+  background-image: url('./salon.jpg');
+  background-size:cover;
+  background-position: center;
+  justify-content: center;
+
+  height: 735px;
+  display: flex;
+  align-items: center;
+    padding: 300px;
+  }
+  .customer-header {
+    /* background-color: #5b3e67; */
+    
+    color: white;
+    padding: 0.5rem;
+    /* justify-content:; */
+  }
+  .customer-header h1{
+    font-size: 2.8rem;
+  }
+  .customer-header p{
+    font-size: 2.0rem;
+  }
+  
+  .customer-header {
+    color: #fa6000;;
+    text-align: center;
+    /* margin-bottom: 200px; */
+  }
+  
+  .customer-dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    
+  }
+  
+  .dashboard-section {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #55c2da;
+    justify-content: center;
+  }
+
+  .backImag1
+  {
+    background-image: url('./salon.jpg');
+    background-size: cover;
+    /* background-position: center; */
+    /* justify-content: center; */
+    /* back image - are  */
+    height: 100vh;
+    width: 1000;
+    ;
+
+  }
+  

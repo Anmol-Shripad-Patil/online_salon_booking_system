@@ -1,0 +1,21 @@
+.salon-home-container {
+    padding: 20px;
+  }
+  
+  .salon-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .salon-dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .dashboard-section {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  

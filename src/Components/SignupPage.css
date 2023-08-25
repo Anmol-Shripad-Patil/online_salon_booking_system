@@ -1,0 +1,67 @@
+/* SignupPage.css */
+
+.signup2-container {
+  background-image: url('./salon.jpg');
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  padding: 20px;
+  }
+  
+  .signup2-form {
+    text-align: center;
+  }
+  
+  .signup2-form h2 {
+    margin-bottom: 20px;
+  }
+  
+  .signup2-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .signup2-form button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .signup2-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .signup2-form p {
+    
+    margin-top: 15px;
+    font-size: 14px;
+  }
+  
+  .signup2-form a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .signup2-form a:hover {
+    text-decoration: underline;
+  }
+
+  .signup2-form {
+    
+    background-color: #fb8f5e;
+    padding: 20px;
+    border-radius: 7px;
+    width: 380px;
+    height: 730px;
+  }
+  
