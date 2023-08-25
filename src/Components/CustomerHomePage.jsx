@@ -1,5 +1,5 @@
 import React from 'react';
-import './CustomerHomePage.css'; // Import your custom styling here
+import './CustomerHomePage.css'; 
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import './HomePage.css';
 import { Link } from 'react-router-dom';
@@ -8,37 +8,50 @@ import { Link } from 'react-router-dom';
 function CustomerHomePage() {
   return (
 
-    
-    <div className="customer-home-container">
+    <div>
+      <div class="topnav">
+        <a class="active" href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/login">Logout</a>
+      </div>
 
+   
+    <div className="customer-home-container">
+    <table > 
        <header className="customer-header">
-       
+       <th>
         <h1>Welcome, [Customer Name]!</h1>
         <p>View and manage your appointments, services, and more.</p>
-       
+        </th>
       </header>
+      <form></form>
       <div className="customer-dashboard">
-        <div className="dashboard-section">
+        
+          <tr className="dashboard-section">
           <h2>Your Appointments</h2>
           <Link to="/cAppoint">
           <Button variant="primary">Click here</Button>
           </Link>
-        </div>
-        <div className="dashboard-section">
+          </tr>
+
+        <tr className="dashboard-section">
           <h2>Book Appointment</h2>
           <Link to="/service">
             <Button variant="primary">Book Now</Button>
           </Link>
+        </tr>
 
-        </div>
-        <div className="dashboard-section">
+        <tr className="dashboard-section">
           <h2>Manage Profile</h2>
+          <br/>
           <Link to="/cProfile">
           <Button variant="primary">Click here</Button>
           </Link>
-        </div>
-      </div>
+        </tr>
       
+      </div>
+      </table>
+      </div>
     </div> 
     
   );

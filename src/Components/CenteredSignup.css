@@ -11,9 +11,9 @@
   
   /* Create a centered container for the login form */
   .container {
-    background-image: url('./salon.jpg');
-    background-size: cover; 
-    display: flex;
+    /* background-image: url('./salon.jpg');
+    background-size: cover;  */
+    /* display: flex; */
     background-position: center;
     justify-content: center;
     align-items: center;

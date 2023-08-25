@@ -1,60 +1,110 @@
-import React from 'react';
-import './CustomerHomePage.css';
+import React, { useState, useEffect } from 'react';
+import { Form, Button } from 'react-bootstrap';
 
-const Cprofile = () => {
+function Cprofile() {
+  const [customerProfile, setCustomerProfile] = useState({
+    CustomerID: 1,
+    FirstName: 'John',
+    LastName: 'Doe',
+    Email: 'john.doe@example.com',
+    PhoneNumber: '555-987-6543',
+  });
+
+  const [editedCustomerProfile, setEditedCustomerProfile] = useState({});
+  const [isEditing, setIsEditing] = useState(false);
+
+  useEffect(() => {
+    // Fetch customer profile details from the API or database
+    // For this example, using the initial hardcoded customer profile
+    // Replace this with actual API call
+    // For now, simulating API fetch
+    setCustomerProfile({
+      CustomerID: 1,
+      FirstName: 'John',
+      LastName: 'Doe',
+      Email: 'john.doe@example.com',
+      PhoneNumber: '555-987-6543',
+    });
+  }, []);
+
+  const handleEditClick = () => {
+    setEditedCustomerProfile(customerProfile);
+    setIsEditing(true);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setEditedCustomerProfile({ ...editedCustomerProfile, [name]: value });
+  };
+
+  const handleSaveClick = () => {
+    // Update customer profile details in the API or database
+    // For this example, logging the updated profile
+    // Replace this with actual API call
+    console.log('Updated customer profile:', editedCustomerProfile);
+
+    setCustomerProfile(editedCustomerProfile);
+    setIsEditing(false);
+  };
+
   return (
-    <div style={styles.container} className='backImag1'>
-      <h1 style={styles.heading}>User Profile</h1>
-      <div style={styles.profileCard}>
-        <img src="user-avatar.jpg" alt="User Avatar" style={styles.profilePicture} />
-        <div style={styles.profileInfo}>
-          <h2 style={styles.profileInfoHeading}>John Doe</h2>
-          <p>Email: john@example.com</p>
-          <p>Location: New York, USA</p>
-          <p>Member Since: January 2020</p>
+    <div>
+      <h2>Manage Customer Profile</h2>
+      {isEditing ? (
+        <Form>
+          <Form.Group>
+            <Form.Label>First Name</Form.Label>
+            <Form.Control
+              type="text"
+              name="FirstName"
+              value={editedCustomerProfile.FirstName || ''}
+              onChange={handleInputChange}
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Last Name</Form.Label>
+            <Form.Control
+              type="text"
+              name="LastName"
+              value={editedCustomerProfile.LastName || ''}
+              onChange={handleInputChange}
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              type="email"
+              name="Email"
+              value={editedCustomerProfile.Email || ''}
+              onChange={handleInputChange}
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Phone Number</Form.Label>
+            <Form.Control
+              type="text"
+              name="PhoneNumber"
+              value={editedCustomerProfile.PhoneNumber || ''}
+              onChange={handleInputChange}
+            />
+          </Form.Group>
+          <Button variant="primary" onClick={handleSaveClick}>
+            Save
+          </Button>
+        </Form>
+      ) : (
+        <div>
+          <p>First Name: {customerProfile.FirstName}</p>
+          <p>Last Name: {customerProfile.LastName}</p>
+          <p>Email: {customerProfile.Email}</p>
+          <p>Phone Number: {customerProfile.PhoneNumber}</p>
+          <Button variant="info" onClick={handleEditClick}>
+            Edit
+          </Button>
         </div>
-      </div>
+      )}
     </div>
   );
-};
-
-const styles = {
-  container: {
-    maxWidth: '800px',
-    margin: '0 auto',
-    padding: '20px',
-    textAlign: 'center',
-
-  },
-  heading: {
-    marginBottom: '20px',
-    color: 'black',
-
-  },
-  profileCard: {
-    display: 'flex',
-    alignItems: 'center',
-    padding: '20px',
-    border: '1px solid #ddd',
-    borderRadius: '5px',
-    backgroundColor: '#fff',
-    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-  },
-  profilePicture: {
-    width: '120px',
-    height: '120px',
-    borderRadius: '50%',
-    marginRight: '20px',
-    color:'blue',
-  },
-  profileInfo: {
-    textAlign: 'left',
-    color:'black',
-  },
-  profileInfoHeading: {
-    margin: '0',
-    color: '#343a40',
-  },
-};
+}
 
 export default Cprofile;

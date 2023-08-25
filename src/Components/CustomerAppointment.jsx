@@ -1,55 +1,87 @@
-import React from 'react';
-import './CustomerHomePage.css';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // Import the Link component
 
 const CustomerAppointment = () => {
+  const [appointments, setAppointments] = useState([
+    { id: 1, customer: 'Anmol Patil', service: 'Haircut', date: '2023-08-25 10:00 AM' },
+    { id: 2, customer: 'Anmol Patil', service: 'Manicure', date: '2023-08-26 2:30 PM' },
+    // Add more appointment data here
+  ]);
+
+  const handleCancel = (id) => {
+    const updatedAppointments = appointments.filter(appointment => appointment.id !== id);
+    setAppointments(updatedAppointments);
+  };
+
   return (
-    <div style={styles.container} className='backImag1'>
-      <h1 style={styles.heading}>Your Appointments</h1>
-      <div style={styles.appointmentCard}>
-        <h2 style={styles.h2}>Appointment Details</h2>
-        <p>Date: September 10, 2023</p>
-        <p>Time: 3:00 PM</p>
-        <p>Service: Haircut & Styling</p>
-        <p>Salon: Salon A</p>
-        <p>Address: 123 Main St, New York</p>
-        <button style={styles.cancelButton}>Cancel Appointment</button>
-      </div>
+    <div className="appointment-table">
+        <h1>Customer Appointment</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Customer</th>
+            <th>Service</th>
+            <th>Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {appointments.map(appointment => (
+            <tr key={appointment.id}>
+              <td>{appointment.customer}</td>
+              <td>{appointment.service}</td>
+              <td>{appointment.date}</td>
+              <td>
+                <button onClick={() => handleCancel(appointment.id)}>Cancel</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+        </table>
+        <br/>
+          <div>
+            <Link to='/cBill' >
+            <button variant="primary">Final Bill</button>
+            </Link>
+            </div>
+      <style jsx>{`
+        .appointment-table {
+          font-family: Arial, sans-serif;
+          margin: 20px;
+        }
+
+        table {
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+        th, td {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        td{
+          background-color: #AED6F1 ;
+        }
+
+        th {
+          background-color: #3498DB;
+        }
+
+        button {
+          background-color: #f44336;
+          color: white;
+          border: none;
+          padding: 6px 12px;
+          cursor: pointer;
+        }
+
+        button:hover {
+          background-color: #d32f2f;
+        }
+      `}</style>
     </div>
   );
-};
-
-const styles = {
-  container: {
-    maxWidth: '800px',
-    margin: '0 auto',
-    padding: '20px',
-    textAlign: 'center',
-    backgroundColor: '#5783db',
-  },
-  heading: {
-    marginBottom: '20px',
-    color: 'black',
-  },
-  appointmentCard: {
-    border: '1px solid #ddd',
-    borderRadius: '5px',
-    padding: '20px',
-    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-    textAlign: 'left',
-    backgroundColor: '#55c2da',
-  },
-  cancelButton: {
-    backgroundColor: 'red',
-    color: 'white',
-    border: 'none',
-    borderRadius: '5px',
-    padding: '10px 20px',
-    cursor: 'pointer',
-  },
-  h2:
-  {
-    color:'black',
-  },
 };
 
 export default CustomerAppointment;

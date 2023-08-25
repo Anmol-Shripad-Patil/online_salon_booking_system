@@ -1,35 +1,43 @@
 import React from 'react';
-import './SalonHomePage.css'; // Import your custom styling here
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import './SalonHomePage.css';
+import { Container, Row, Col, Button } from 'react-bootstrap';
+import './LoginPage.css';
+
 
 function SalonHomePage() {
   return (
     <div className="salon-home-container">
+      <div class="topnav">
+        <a class="active" href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/login">Logout</a>
+      </div>
       <header className="salon-header">
         <h1>Welcome, [Salon Name]!</h1>
         <p>Manage your salon profile, appointments, and services.</p>
       </header>
       <div className="salon-dashboard">
         <div className="dashboard-section">
-          <h2>Your Appointments</h2>
-          {/* Display a list of upcoming appointments */}
-          {/* Include buttons to modify and cancel appointments */}
+          <h2>Appointment Calender</h2>
+          <Link to="/appointmentcalender">
+            <Button variant="primary">Appointment Calender</Button>
+          </Link>
         </div>
+        {/* Other dashboard sections */}
         <div className="dashboard-section">
-          <h2>Manage Services</h2>
-          {/* Display a list of salon services */}
-          {/* Include buttons to add, edit, or remove services */}
-        </div>
-        <div className="dashboard-section">
-          <h2>Appointment Calendar</h2>
-          {/* Display a calendar view with appointments */}
-          {/* Include options to view, modify, and cancel appointments */}
-        </div>
-        <div className="dashboard-section">
-          <h2>Customer Management</h2>
-          {/* Display a list of customers with their contact information */}
-          {/* Include options to view customer details and appointment history */}
-        </div>
-        {/* Other dashboard sections for account settings, notifications, etc. */}
+          <h2>Manage Barbers</h2>
+          <Link to="/mBarbers">
+            <Button variant="primary">Manage Barbers</Button>
+          </Link>
+         </div>
+          <div className="dashboard-section">
+            <h2>Manage Profile</h2>
+              <Link to="/salonprofilemanagement">
+            <Button variant="primary">Manage Profile</Button>
+          </Link>
+         </div>
+
       </div>
     </div>
   );

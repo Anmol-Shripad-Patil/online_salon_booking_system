@@ -32,8 +32,8 @@
   
   /* Hero section styles */
   .hero-section {
-    background-image: url('./salon.jpg');
-    background-size: cover;
+    /* background-image: url('./salon.jpg');
+    background-size: cover; */
     background-position: center;
     justify-content: center;
 

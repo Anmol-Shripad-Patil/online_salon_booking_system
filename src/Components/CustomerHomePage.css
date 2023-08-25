@@ -1,39 +1,51 @@
 .customer-home-container 
 {
-  background-image: url('./salon.jpg');
+  /* background-image: url('./salon.jpg');
   background-size:cover;
-  background-position: center;
+  background-position: center; */
   justify-content: center;
 
-  height: 735px;
+  height: 700px;
   display: flex;
-  align-items: center;
-    padding: 300px;
+  /* align-items: center; */
+    padding: 100px;
+    width: 1550px;
+  }
+  .container-fluid{
+    background-color: #34495E;
+    padding: 0.8%;
+    /* text-decoration: none; */
+    font-weight: bold;
+
+
   }
   .customer-header {
     /* background-color: #5b3e67; */
-    
     color: white;
     padding: 0.5rem;
+    
     /* justify-content:; */
   }
   .customer-header h1{
-    font-size: 2.8rem;
+    font-size: 3rem;
   }
   .customer-header p{
     font-size: 2.0rem;
   }
   
   .customer-header {
-    color: #fa6000;;
+    color: #f36005;;
     text-align: center;
     /* margin-bottom: 200px; */
   }
   
-  .customer-dashboard {
+  .customer-dashboard { 
+    
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin: 20px;
+   /* text-align: center; */
     
   }
   
