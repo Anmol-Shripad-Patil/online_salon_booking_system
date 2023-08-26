@@ -8,7 +8,7 @@ function HomePage() {
   return (
     <div className="home-container">
       <header className="header">
-        <nav>
+        {/* <nav>
           <ul className="nav-list">
             <li><a href="#">Home</a></li>
             <li><a href="#">Services</a></li>
@@ -17,7 +17,9 @@ function HomePage() {
             <li><Link to="/centereds" >Signup</Link></li>
             <li><Link to="/login" >Login</Link></li>
           </ul>
-        </nav>
+        </nav> */}
+        
+
        </header>
        <div>   
       <section className="hero-section">

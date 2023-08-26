@@ -1,5 +1,6 @@
 //import logo from './logo.svg';
 import './App.css';
+import { Link } from 'react-router-dom';
 import HomePage from './Components/HomePage';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import CustomerHomePage from './Components/CustomerHomePage';
@@ -9,7 +10,7 @@ import SalonHomePage from './Components/SalonHomePage';
 import SalonSignupPage from './Components/SalonSignupPage';
 import CenteredSignup from './Components/CenteredSignup';
 import AdminHomePage from './Components/AdminHomePage';
-import ServiceMenu from './Components/Booking';
+
 import CustomerAppointment from './Components/CustomerAppointment';
 import Cprofile from './Components/Cprofile';
 import CustomerBill from './Components/CustomerBill';
@@ -17,27 +18,41 @@ import Booking from './Components/Booking';
 import ManageSalonProfile from './Components/SalonProfileManagement';
 import ManageBarbers from './Components/ManageBarbers';
 import SalonProfileManagement from './Components/SalonProfileManagement';
-
+import { useSelector } from 'react-redux';
 
 function App() {
+
+//  const mystate = useSelector((state)=> state.logged);   // this logged from reduxcomponent store
+
+   const mystate=useSelector((state)=> state.logged);
+
   return (
     <div className="App">
-      <header className="App-header">
-       {/* <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a> */}
-
+      <div style={{display: mystate.loggedIn?"none":"block"}}>
          {/* <HomePage/>  */}
-         
+         <nav className="navbar navbar-expand-sm bg-light mb-2">  
+          {/* it diaplay header bare link in single line */}
+          <div className="content-fluid">
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <Link to='/' className='nav-link'>Home</Link>
+            </li>
+            <li className="nav-item">
+              <Link to='#' className="nav-link">About Us</Link>
+            </li>
+            <li className="nav-item">
+              <Link to='/centereds' className="nav-link">SignUp</Link>
+            </li>
+            <li className="nav-item">
+              <Link to='/login' className="nav-link">Login</Link>
+            </li>
+          </ul>
+         </div>
+       </nav>
+       </div>
+
+
+
          <Routes>
                 <Route path="/" element={<HomePage/>}/>
                 <Route path="aHome" element={<AdminHomePage/>}/>
@@ -64,7 +79,6 @@ function App() {
          <SalonHomePage/>
          <AdminHomePage/>   */}
 
-      </header>
     </div>
   );
 }
