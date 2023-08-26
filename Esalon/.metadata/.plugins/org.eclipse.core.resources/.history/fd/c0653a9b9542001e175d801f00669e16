@@ -1,0 +1,17 @@
+package com.example.demo.repositories;
+
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import com.example.demo.entities.Barber;
+import com.example.demo.entities.City;
+
+@Repository
+public interface BarberRepo extends JpaRepository<Barber, Integer> {
+
+	@Query("select b from Barber b where barber_id = :barber_id")
+	public Optional<Barber> getBarber(int barber_id);
+}

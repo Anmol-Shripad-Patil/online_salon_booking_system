@@ -1,0 +1,76 @@
+package com.example.demo.entities;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="barbers")
+public class Barber {
+	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int barberId;
+
+    @ManyToOne
+    @JoinColumn(name = "salon_id")
+    private Salon salon;
+
+    private String barberName;
+    private int age;
+    private String gender;
+
+    public Barber() {
+    }
+
+    public Barber(String barberName, int age, String gender) {
+        this.barberName = barberName;
+        this.age = age;
+        this.gender = gender;
+    }
+
+    public int getBarberId() {
+        return barberId;
+    }
+
+    public void setBarberId(int barberId) {
+        this.barberId = barberId;
+    }
+
+    public Salon getSalon() {
+        return salon;
+    }
+
+    public void setSalon(Salon salon) {
+        this.salon = salon;
+    }
+
+    public String getBarberName() {
+        return barberName;
+    }
+
+    public void setBarberName(String barberName) {
+        this.barberName = barberName;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+}
+}
