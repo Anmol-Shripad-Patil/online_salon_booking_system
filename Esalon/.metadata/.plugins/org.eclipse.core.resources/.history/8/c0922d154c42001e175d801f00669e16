@@ -1,0 +1,58 @@
+package com.example.demo.entities;
+
+
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "time_slots")
+public class TimeSlot {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "Id")
+    private int Id;
+
+    @Column(name = "Start_time", nullable = false)
+    private String Start_time;
+
+    @Column(name = "End_time", nullable = false)
+    private String End_time;
+
+    public TimeSlot() {
+    }
+
+    public TimeSlot(String start_time, String End_time) {
+		super();
+		Start_time = start_time;
+		End_time = End_time;
+	}
+
+	public int getId() {
+		return Id;
+	}
+
+	public void setId(int id) {
+		Id = id;
+	}
+
+	public String getStart_time() {
+		return Start_time;
+	}
+
+	public void setStart_time(String start_time) {
+		Start_time = start_time;
+	}
+
+	public String getEnd_time() {
+		return End_time;
+	}
+
+	public void setEnd_time(String end_time) {
+		End_time = end_time;
+	}
+	
+	
+
+
+}
+

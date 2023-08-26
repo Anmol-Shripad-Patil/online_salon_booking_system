@@ -1,0 +1,22 @@
+package com.example.demo.repositories;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import com.example.demo.entities.Booking;
+
+
+@Repository
+public interface BookingRepo extends JpaRepository<Booking, Integer> {
+	
+	
+	@Query("select t from TimeSlot t where tid = :tid")
+	public Optional<TimeSlot> getTimeSlot(int tid);
+	
+	@Query("select b from Booking b where b.customer.customer_id= :customer_id")
+	public List<Booking> findByCustomer_id(int customer_id);
+
+}
