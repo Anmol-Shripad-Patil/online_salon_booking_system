@@ -1,0 +1,50 @@
+package com.example.demo.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.entities.Barber;
+import com.example.demo.entities.BarberReg;
+import com.example.demo.entities.Billing;
+import com.example.demo.entities.BillingDump;
+import com.example.demo.entities.Salon;
+import com.example.demo.services.BarberService;
+import com.example.demo.services.BillingService;
+import com.example.demo.services.CustomerService;
+import com.example.demo.services.SalonService;
+
+
+@CrossOrigin(origins="http://localhost:3000")
+@RestController
+public class BillingController {
+	
+	@Autowired
+	BillingService biserv;
+	
+	@Autowired
+	CustomerService cservice;
+	
+	
+	
+	
+	
+	@PostMapping("/billing")
+	public Billing billingdata(@RequestBody BillingDump bdump)
+	{
+	
+		Customer c=sservice.getSalonId(breg.getSalon_id());
+		Barber b=new Barber(s,breg.getBarber_name(),breg.getAge(),breg.getGender());
+		
+		Barber saved=bserv.saveBarber(b);
+		
+		return saved;
+		
+		
+	}
+	
+	
+
+}
