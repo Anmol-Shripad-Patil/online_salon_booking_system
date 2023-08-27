@@ -47,17 +47,17 @@ public class TimeSlotService {
 	}
 	
 	
-	public List<TimeSlot> getTImeSlotsNotBookedForBarber(int barber_id)
-	{
-		List<Booking> bookedSlots=brepo.findByBarber_BarberId(barber_id);
-		List<TimeSlot> allTimeSlots = trepo.findAll();
-		
-		List<TimeSlot> bookedTimeSlots = bookedSlots.stream()
-				.map(Booking::getSlot)
-				.collect(Collectors.toList());
-		
-		allTimeSlots.removeAll(bookedTimeSlots);
-		
-		return allTimeSlots;
-	}
+//	public List<TimeSlot> getTImeSlotsNotBookedForBarber(int barber_id)
+//	{
+//		List<Booking> bookedSlots=brepo.findByBarber_BarberId(barber_id);
+//		List<TimeSlot> allTimeSlots = trepo.findAll();
+//		
+//		List<TimeSlot> bookedTimeSlots = bookedSlots.stream()
+//				.map(Booking::getSlot)
+//				.collect(Collectors.toList());
+//		
+//		allTimeSlots.removeAll(bookedTimeSlots);
+//		
+//		return allTimeSlots;
+//	}
 }

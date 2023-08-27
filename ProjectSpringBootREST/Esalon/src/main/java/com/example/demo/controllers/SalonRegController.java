@@ -13,6 +13,7 @@ import com.example.demo.entities.Salon;
 import com.example.demo.entities.City;
 import com.example.demo.entities.SalonRegistration;
 import com.example.demo.services.CityService;
+import com.example.demo.services.EmailService;
 import com.example.demo.services.LoginService;
 import com.example.demo.services.SalonRegService;
 
@@ -24,6 +25,9 @@ public class SalonRegController {
 	
 	@Autowired 
 	CityService cser;
+	
+	 @Autowired
+	  private EmailService emailService;
 	
 	@Autowired
 	LoginService logserv;
@@ -42,6 +46,12 @@ public class SalonRegController {
 	
 	Salon s=new Salon(salreg.getSalon_name(),l_S,c,salreg.getSalon_address(),salreg.getEmail(),salreg.getContact_no());
 	Salon sSaved=salserv.saveSalon(s);
+	
+	
+	  String to = salreg.getEmail();
+      String subject = "Welcome to our platform!";
+      String text = "Dear " + salreg.getSalon_name() +"Your Login Id is: "+logserv.getLoginById(salreg.getPassword())+ ",\n\nWelcome to our platform. Thank you for registering!";
+      emailService.sendRegistrationEmail(to, subject, text);
 		
 	return sSaved;
 		

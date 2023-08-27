@@ -46,13 +46,13 @@ public class SalonController {
 		return salerv.getSalonByCity(city_id);
 	}
 	
-	@GetMapping("/salon/{salon_id}")
-    public List<Booking> getBookingsBySalonId(@PathVariable int salon_id) {
-        List<Barber> barbers = barberservice.getBarbersBySalonId(salon_id);
-        List<Integer> barberIds = barbers.stream()
-                .map(Barber::getBarber_id)
-                .collect(Collectors.toList());
-
-        return bookingservice.getBookingsByBarberIds(barberIds);
-    }
+//	@GetMapping("/salon/{salon_id}")
+//    public List<Booking> getBookingsBySalonId(@PathVariable int salon_id) {
+//        List<Barber> barbers = barberservice.getBarbersBySalonId(salon_id);
+//        List<Integer> barberIds = barbers.stream()
+//                .map(Barber::getBarber_id)
+//                .collect(Collectors.toList());
+//
+//        return bookingservice.getBookingsByBarberIds(barberIds);
+//    }
 }

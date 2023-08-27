@@ -18,10 +18,10 @@ public class SlotBookingController {
 	@Autowired
 	TimeSlotService tservice;
 
-	@GetMapping("/timeslots")
-	public List<TimeSlot> getTimeSlotsNotBookedForBarber(@RequestParam("barber_id") int barber_id)
-	{
-		return tservice.getTImeSlotsNotBookedForBarber(barber_id);
-	}
+//	@GetMapping("/timeslots")
+//	public List<TimeSlot> getTimeSlotsNotBookedForBarber(@RequestParam("barber_id") int barber_id)
+//	{
+//		return tservice.getTImeSlotsNotBookedForBarber(barber_id);
+//	}
 	
 }

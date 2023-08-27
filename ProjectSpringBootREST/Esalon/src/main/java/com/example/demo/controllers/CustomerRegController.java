@@ -13,6 +13,7 @@ import com.example.demo.entities.CustomerRegistration;
 import com.example.demo.entities.Login;
 import com.example.demo.services.CustomerRegService;
 import com.example.demo.services.CustomerService;
+import com.example.demo.services.EmailService;
 import com.example.demo.services.LoginService;
 
 @RestController
@@ -22,7 +23,12 @@ public class CustomerRegController {
 	CustomerRegService custregserv;
 	
 	@Autowired
+	private EmailService emailService;
+	
+	@Autowired
 	CustomerService custserv;
+	
+	
 	
 	@Autowired
 	LoginService logserv;
@@ -40,12 +46,18 @@ public class CustomerRegController {
 		
 		Login lsaved=logserv.save(l);
 		
+		   
 		
 		Customer c=new Customer(l,creg.getFirst_name(),creg.getLast_name(),creg.getEmail(),creg.getContact_no(),creg.getAddress(),creg.getGender());
 		
 		
 		
 		Customer saved=custregserv.saveCustomer(c);
+		
+		    String to = creg.getEmail();
+	        String subject = "Welcome to our platform!";
+	        String text = "Dear " + creg.getFirst_name() +"Your Login Id is: "+logserv.getLoginById(creg.getPassword())+ ",\n\nWelcome to our platform. Thank you for registering!";
+	        emailService.sendRegistrationEmail(to, subject, text);
 		
 		return saved;
 		

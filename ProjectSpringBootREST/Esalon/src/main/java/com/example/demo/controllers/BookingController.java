@@ -24,7 +24,7 @@ import com.example.demo.services.CustomerService;
 import com.example.demo.services.ServicesService;
 import com.example.demo.services.TimeSlotService;
 
-import antlr.collections.List;
+import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -73,12 +73,16 @@ public class BookingController {
 	}
 	
 	
+		@GetMapping("/salon/{salon_id}")
+			public List<Booking> getBookingsBySalonId(@PathVariable int salon_id) {
+                return bookserv.getBookingsBySalonId(salon_id);
+             }
 	
-	@GetMapping("/getCustomersforBilling/{customer_id}")
-	public java.util.List<Booking> getCustomersforBilling(@PathVariable("customer_id")int customer_id)
-	{
-	    return bookserv.getBookings(customer_id);
-	}
+	//@GetMapping("/getCustomersforBilling/{customer_id}")
+	//public java.util.List<Booking> getCustomersforBilling(@PathVariable("customer_id")int customer_id)
+	//{
+	//    return bookserv.getBookings(customer_id);
+	//}
 	
 //	@PostMapping("/bookingid")
 //	public Booking bookAppointment(@RequestBody Booking bid)
