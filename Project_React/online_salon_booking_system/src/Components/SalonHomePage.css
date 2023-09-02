@@ -1,0 +1,33 @@
+.salon-home-container {
+  /* background-image: url('./picsal1.jpg');
+  background-size: cover; */
+  /* padding: 20px; */
+  height: 100vh;
+  width: 100%; 
+  
+}
+
+.salon-header {
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  color: #f36005;
+}
+
+.salon-dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  /* border: 1px solid #ddd; */
+  padding: 30px;
+  height: 40vh;
+  border-radius: 5px;
+ 
+}
+
+.dashboard-section {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 5px;
+
+}
