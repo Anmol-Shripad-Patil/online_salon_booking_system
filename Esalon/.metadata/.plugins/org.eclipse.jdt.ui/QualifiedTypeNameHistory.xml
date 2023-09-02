@@ -12,8 +12,6 @@
     <fullyQualifiedTypeName name="javax.persistence.Id"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
     <fullyQualifiedTypeName name="com.example.demo.repositories.SalonRepo"/>
-    <fullyQualifiedTypeName name="com.example.demo.services.SalonService"/>
-    <fullyQualifiedTypeName name="com.example.demo.entities.Salon"/>
     <fullyQualifiedTypeName name="com.example.demo.services.CityService"/>
     <fullyQualifiedTypeName name="com.example.demo.entities.City"/>
     <fullyQualifiedTypeName name="com.example.demo.services.BarberService"/>
@@ -33,4 +31,15 @@
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
     <fullyQualifiedTypeName name="java.util.Optional"/>
     <fullyQualifiedTypeName name="com.example.demo.entities.TimeSlot"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
+    <fullyQualifiedTypeName name="com.example.demo.entities.Customer"/>
+    <fullyQualifiedTypeName name="com.example.demo.services.BillingService"/>
+    <fullyQualifiedTypeName name="com.example.demo.entities.Billing"/>
+    <fullyQualifiedTypeName name="com.example.demo.entities.BillingDump"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
+    <fullyQualifiedTypeName name="com.example.demo.entities.BarberReg"/>
+    <fullyQualifiedTypeName name="com.example.demo.entities.Salon"/>
+    <fullyQualifiedTypeName name="com.example.demo.services.EmailService"/>
+    <fullyQualifiedTypeName name="com.example.demo.services.SalonService"/>
 </qualifiedTypeNameHistroy>

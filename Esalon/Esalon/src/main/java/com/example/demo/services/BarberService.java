@@ -36,5 +36,9 @@ public class BarberService {
 	{
 		return brepo.getbabersbysalon(salon_id);
 	}
+	public Barber saveBarber(Barber b)
+	{
+		return brepo.save(b);
+	}
 
 }

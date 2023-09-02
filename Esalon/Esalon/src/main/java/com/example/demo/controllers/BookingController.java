@@ -23,6 +23,7 @@ import com.example.demo.entities.TimeSlot;
 import com.example.demo.services.BarberService;
 import com.example.demo.services.BookingService;
 import com.example.demo.services.CustomerService;
+import com.example.demo.services.SalonService;
 import com.example.demo.services.ServicesService;
 import com.example.demo.services.TimeSlotService;
 
@@ -45,6 +46,9 @@ public class BookingController {
 	@Autowired
 	CustomerService cserv;
 	
+	@Autowired
+	SalonService sserv;
+	
 	
 	
 	@PostMapping("/registerBooking")
@@ -60,7 +64,9 @@ public class BookingController {
 	
 	Customer c=cserv.getCustomer(brjs.getCustomer_id());
 	
-	Booking book = new Booking(s,b,c,t,status);
+	Salon sal=sserv.getSalonId(brjs.getSalon_id());
+	
+	Booking book = new Booking(s,b,c,t,status,sal);
 
     
     Booking booked=bookserv.saveBooking(book);
@@ -78,6 +84,10 @@ public class BookingController {
 		return bookserv.getBookingbyCustomer(customer_id);
 	}
 	
+	@GetMapping("/salon/{salon_id}")
+	public List<Booking> getBookingsBySalonId(@PathVariable int salon_id) {
+        return bookserv.getBookingsBySalonId(salon_id);
+     }
 //	@PostMapping("/bookingid")
 //	public Booking bookAppointment(@RequestBody Booking bid)
 //	{

@@ -34,4 +34,10 @@ public class SalonController {
 		
 		return salerv.getSalonByCity(city_id);
 	}
+	@GetMapping("/getByloginid/{login_id}")
+	public Salon getsalonbyLoginID(@PathVariable("login_id") int login_id)
+	{
+		return salerv.getsalonByLogin_id(login_id);
+		
+	}
 }

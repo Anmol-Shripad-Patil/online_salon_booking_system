@@ -37,8 +37,8 @@ public class Login {
         return login_id;
     }
 
-    public void setLoginId(int loginId) {
-        this.login_id = loginId;
+    public void setLoginId(int login_id) {
+        this.login_id = login_id;
     }
 
     public String getRegistrationDate() {

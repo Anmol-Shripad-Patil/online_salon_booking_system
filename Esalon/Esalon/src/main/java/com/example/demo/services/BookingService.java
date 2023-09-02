@@ -29,6 +29,9 @@ public class BookingService {
 		return brepo.findByCustomer_id(customer_id);
 	}
 	
-	
+public List<Booking> getBookingsBySalonId(int salon_id) {
+		
+		return brepo.getBookingsBySalonId(salon_id);
+	}
 	
 }
