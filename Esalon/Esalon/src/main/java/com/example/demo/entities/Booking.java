@@ -32,21 +32,27 @@ public class Booking {
     private TimeSlot slot;
 
     private String status;
+    
+    @ManyToOne
+    @JoinColumn(name = "salon_id")
+    private Salon salon;
 
     public Booking() {
     }
 
-    public Booking(Servic servic, Barber barber, Customer customer, TimeSlot slot, String status) {
-        this.servic = servic;
-        this.barber = barber;
-        this.customer = customer;
-        this.slot = slot;
-        this.status = status;
-    }
+	public Booking( Servic servic, Barber barber, Customer customer, TimeSlot slot, String status,
+			Salon salon) {
+		super();
+	
+		this.servic = servic;
+		this.barber = barber;
+		this.customer = customer;
+		this.slot = slot;
+		this.status = status;
+		this.salon = salon;
+	}
 
-  
-
-    public int getBooking_id() {
+	public int getBooking_id() {
 		return booking_id;
 	}
 
@@ -54,44 +60,54 @@ public class Booking {
 		this.booking_id = booking_id;
 	}
 
-	public Servic getService() {
-        return servic;
-    }
+	public Servic getServic() {
+		return servic;
+	}
 
-    public void setService(Servic servic) {
-        this.servic = servic;
-    }
+	public void setServic(Servic servic) {
+		this.servic = servic;
+	}
 
-    public Barber getBarber() {
-        return barber;
-    }
+	public Barber getBarber() {
+		return barber;
+	}
 
-    public void setBarber(Barber barber) {
-        this.barber = barber;
-    }
+	public void setBarber(Barber barber) {
+		this.barber = barber;
+	}
 
-    public Customer getCustomer() {
-        return customer;
-    }
+	public Customer getCustomer() {
+		return customer;
+	}
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
 
-    public TimeSlot getSlot() {
-        return slot;
-    }
+	public TimeSlot getSlot() {
+		return slot;
+	}
 
-    public void setSlot(TimeSlot slot) {
-        this.slot = slot;
-    }
+	public void setSlot(TimeSlot slot) {
+		this.slot = slot;
+	}
 
-    public String getStatus() {
-        return status;
-    }
+	public String getStatus() {
+		return status;
+	}
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public Salon getSalon() {
+		return salon;
+	}
+
+	public void setSalon(Salon salon) {
+		this.salon = salon;
+	}
+
+    
 }
 

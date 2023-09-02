@@ -27,6 +27,13 @@ public class Barber {
     public Barber() {
     }
 
+    public Barber(Salon salon_id, String barber_name, int age, String gender) {
+		super();
+		this.salon_id = salon_id;
+		this.barber_name = barber_name;
+		this.age = age;
+		this.gender = gender;
+	}
     public Barber(String barber_name, int age, String gender) {
         this.barber_name = barber_name;
         this.age = age;

@@ -41,5 +41,9 @@ public class LoginService {
 	{
 		return loginrepo.findById(id).get();
 	}
+public String getLoginById(String password) {
+		
+		return loginrepo.getLoginById(password);
+	}
 
 }

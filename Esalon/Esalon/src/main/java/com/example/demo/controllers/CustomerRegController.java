@@ -13,6 +13,7 @@ import com.example.demo.entities.CustomerRegistration;
 import com.example.demo.entities.Login;
 import com.example.demo.services.CustomerRegService;
 import com.example.demo.services.CustomerService;
+import com.example.demo.services.EmailService;
 import com.example.demo.services.LoginService;
 
 @RestController
@@ -27,10 +28,14 @@ public class CustomerRegController {
 	@Autowired
 	LoginService logserv;
 	
+	@Autowired
+	EmailService emailService;
+	
 	@PostMapping("/registerCustomer")
 	@CrossOrigin(origins = "http://localhost:3000")
 	public Customer regUser(@RequestBody CustomerRegistration creg)
 	{
+		
 		//Customer c=custserv.getRole(creg.getRoleid());
 		SimpleDateFormat f=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		Date date=new Date();
@@ -46,6 +51,10 @@ public class CustomerRegController {
 		
 		
 		Customer saved=custregserv.saveCustomer(c);
+		String to = creg.getEmail();
+        String subject = "Welcome to our platform!";
+        String text = "Dear " + creg.getFirst_name() +" Your Login Id is: "+logserv.getLoginById(creg.getPassword())+ ",\n\nWelcome to ESALON-Salon Booking System. Thank you for registering!";
+        emailService.sendRegistrationEmail(to, subject, text);
 		
 		return saved;
 		

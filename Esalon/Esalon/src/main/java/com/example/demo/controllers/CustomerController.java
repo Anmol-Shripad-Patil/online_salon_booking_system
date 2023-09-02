@@ -45,6 +45,7 @@ public class CustomerController {
 		return cservice.getCustomer_(loginid);
 		
 	}
+    
 
 }
 

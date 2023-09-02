@@ -13,9 +13,21 @@ public class SalonService {
 	@Autowired
 	SalonRepo salrepo;
 	
+	
+	
 	public List<Salon> getSalonByCity(int city_id)
 	{
 		//System.out.println("2."+city_id);
 		return salrepo.getSalonObject(city_id); 
 	}
+	public Salon getSalonId(int salon_id) {
+		
+		return salrepo.getSalonId(salon_id);
+	}
+	
+	public Salon getsalonByLogin_id(int login_id)
+	{
+		return salrepo.getSalonByLogin(login_id);
+	}
+
 }
