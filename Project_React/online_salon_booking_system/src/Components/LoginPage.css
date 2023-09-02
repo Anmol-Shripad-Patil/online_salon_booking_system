@@ -1,0 +1,93 @@
+/* LoginPage.css */
+
+
+.login-container {
+  background-image: url('./salon.jpg');
+    background-size: cover; 
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    width: 100%; 
+    display: flex;
+    align-items: center;
+    padding: 150px; 
+    
+
+
+    /* max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); */
+  }
+
+
+  .login-form {
+
+    text-align: center;
+    background-color: #555e61;
+  }
+  
+  .login-form h2 {
+    color: #007bff;
+    margin-bottom: 20px;
+  }
+  
+  .login-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+  }
+  
+  .login-form button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .login-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .login-form p {
+    color: rgb(250, 247, 247);
+    margin-top: 15px;
+    font-size: 17px;
+  }
+  
+  .login-form a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .login-form a:hover {
+    text-decoration: underline;
+  }
+  
+
+
+  .login-form {
+    background-color: #81d3ea;
+    padding: 25px;
+    border-radius: 7px;
+    width: 350px;
+    height: 100%;
+  }
+
+    /* .login-form input[type="text"],
+  .login-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+  } */
