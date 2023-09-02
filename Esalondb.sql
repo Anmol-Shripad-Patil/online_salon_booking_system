@@ -33,7 +33,7 @@ CREATE TABLE `barbers` (
   PRIMARY KEY (`barber_id`),
   KEY `salon_idb_idx` (`salon_id`),
   CONSTRAINT `salon_idb` FOREIGN KEY (`salon_id`) REFERENCES `salons` (`salon_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `barbers` (
 
 LOCK TABLES `barbers` WRITE;
 /*!40000 ALTER TABLE `barbers` DISABLE KEYS */;
-INSERT INTO `barbers` VALUES (4,11,'Barber A',28,'Male'),(5,12,'Barber B',32,'Female'),(6,11,'Barber C',24,'Male');
+INSERT INTO `barbers` VALUES (4,11,'amit',28,'Male'),(5,12,'pooja',32,'Female'),(6,11,'abhijit',24,'Male'),(7,11,'vikas',85,'Male'),(9,11,'ganesh',21,'male'),(10,31,'kaustubh',30,'male');
 /*!40000 ALTER TABLE `barbers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -59,10 +59,13 @@ CREATE TABLE `billings` (
   `billing_date` datetime NOT NULL,
   `total_amount` decimal(7,2) NOT NULL,
   `payment_status` varchar(10) NOT NULL DEFAULT 'unpaid',
+  `salon_id` int DEFAULT NULL,
   PRIMARY KEY (`billing_id`),
   KEY `customer_idbt_idx` (`customer_id`),
-  CONSTRAINT `customer_idbt` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `FKtripcymqpkctyc5rrga1n0e4j` (`salon_id`),
+  CONSTRAINT `customer_idbt` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`),
+  CONSTRAINT `FKtripcymqpkctyc5rrga1n0e4j` FOREIGN KEY (`salon_id`) REFERENCES `salons` (`salon_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=202 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -71,7 +74,7 @@ CREATE TABLE `billings` (
 
 LOCK TABLES `billings` WRITE;
 /*!40000 ALTER TABLE `billings` DISABLE KEYS */;
-INSERT INTO `billings` VALUES (1,1,'2023-08-01 10:00:00',350.00,'unpaid'),(2,3,'2023-08-10 15:30:00',300.50,'unpaid');
+INSERT INTO `billings` VALUES (1,1,'2023-08-01 10:00:00',350.00,'unpaid',12),(2,3,'2023-08-10 15:30:00',300.50,'unpaid',12),(3,10,'2023-08-26 00:00:00',2000.00,'unpaid',NULL),(151,3,'2023-08-26 00:00:00',3050.00,'unpaid',12),(152,3,'2023-08-26 00:00:00',3050.00,'unpaid',12),(173,9,'2023-08-26 00:00:00',1150.00,'unpaid',12),(174,9,'2023-08-26 00:00:00',1150.00,'unpaid',NULL),(175,9,'2023-08-27 00:00:00',1150.00,'unpaid',NULL),(176,9,'2023-08-27 00:00:00',1150.00,'unpaid',NULL),(177,9,'2023-08-27 00:00:00',1150.00,'unpaid',NULL),(178,9,'2023-08-27 00:00:00',1150.00,'unpaid',NULL),(179,9,'2023-08-27 00:00:00',1150.00,'unpaid',NULL),(180,9,'2023-08-27 00:00:00',1150.00,'unpaid',NULL),(181,9,'2023-08-27 00:00:00',1150.00,'unpaid',NULL),(182,9,'2023-08-27 00:00:00',1150.00,'unpaid',NULL),(183,9,'2023-08-27 00:00:00',1150.00,'unpaid',NULL),(184,9,'2023-08-27 00:00:00',1150.00,'unpaid',NULL),(185,9,'2023-08-27 00:00:00',1150.00,'unpaid',NULL),(186,9,'2023-08-27 00:00:00',1150.00,'unpaid',NULL),(187,9,'2023-08-27 00:00:00',1150.00,'unpaid',NULL),(188,3,'2023-08-27 00:00:00',2300.00,'unpaid',NULL),(189,3,'2023-08-27 00:00:00',2300.00,'unpaid',NULL),(190,5,'2023-08-27 00:00:00',500.00,'unpaid',NULL),(191,5,'2023-08-27 00:00:00',500.00,'unpaid',NULL),(192,5,'2023-08-27 00:00:00',500.00,'unpaid',NULL),(193,5,'2023-08-27 00:00:00',500.00,'unpaid',NULL),(194,5,'2023-08-27 00:00:00',500.00,'unpaid',NULL),(195,5,'2023-08-27 00:00:00',500.00,'unpaid',NULL),(196,13,'2023-08-27 00:00:00',550.00,'unpaid',NULL),(197,13,'2023-08-27 00:00:00',550.00,'unpaid',NULL),(198,16,'2023-08-27 00:00:00',300.00,'unpaid',NULL),(199,16,'2023-08-27 00:00:00',300.00,'unpaid',NULL),(200,9,'2023-09-01 00:00:00',650.00,'unpaid',NULL),(201,9,'2023-09-01 00:00:00',650.00,'unpaid',NULL);
 /*!40000 ALTER TABLE `billings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -89,16 +92,19 @@ CREATE TABLE `bookings` (
   `customer_id` int NOT NULL,
   `tid` int NOT NULL,
   `status` varchar(45) DEFAULT NULL,
+  `salon_id` int DEFAULT NULL,
   PRIMARY KEY (`booking_id`),
   KEY `service_idb_idx` (`service_id`),
   KEY `barber_idb_idx` (`barber_id`),
   KEY `customer_idb_idx` (`customer_id`),
   KEY `slot_idb_idx` (`tid`),
+  KEY `FKt638tl0q4baxbnh20epgpn4gr` (`salon_id`),
   CONSTRAINT `barber_idb` FOREIGN KEY (`barber_id`) REFERENCES `barbers` (`barber_id`),
   CONSTRAINT `customer_idb` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`),
+  CONSTRAINT `FKt638tl0q4baxbnh20epgpn4gr` FOREIGN KEY (`salon_id`) REFERENCES `salons` (`salon_id`),
   CONSTRAINT `service_idb` FOREIGN KEY (`service_id`) REFERENCES `services` (`serviceID`),
   CONSTRAINT `slot_idb` FOREIGN KEY (`tid`) REFERENCES `time_slots` (`tid`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -107,7 +113,7 @@ CREATE TABLE `bookings` (
 
 LOCK TABLES `bookings` WRITE;
 /*!40000 ALTER TABLE `bookings` DISABLE KEYS */;
-INSERT INTO `bookings` VALUES (1,1,4,1,1,'Confirmed'),(2,2,4,1,2,'Pending'),(3,3,5,3,1,'Confirmed'),(4,2,5,3,5,'booked'),(5,2,5,3,5,'booked'),(6,2,5,3,5,'booked'),(7,1,4,1,1,'booked'),(8,1,4,1,1,'booked'),(9,1,4,1,1,'booked'),(10,1,4,1,1,'booked'),(11,1,4,1,1,'booked'),(12,1,4,1,1,'booked'),(13,3,4,3,5,'booked'),(14,3,4,3,5,'booked');
+INSERT INTO `bookings` VALUES (3,3,5,3,1,'Confirmed',12),(4,2,5,3,5,'booked',12),(5,2,5,3,5,'booked',12),(6,2,5,3,5,'booked',12),(16,1,5,3,6,'booked',12),(17,1,5,3,6,'booked',12),(18,1,5,3,6,'booked',12),(19,1,5,3,6,'booked',12),(20,2,5,1,3,'booked',12),(21,3,5,3,2,'booked',12),(22,3,5,3,8,'booked',12),(23,2,5,3,11,'booked',12),(26,1,6,4,5,'booked',NULL),(30,4,6,10,1,'booked',NULL),(31,4,6,10,2,'booked',NULL),(33,4,6,9,4,'booked',NULL),(40,2,10,16,3,'booked',NULL),(41,2,10,16,3,'booked',NULL),(42,1,4,1,1,'booked',11),(43,2,5,9,7,'booked',12);
 /*!40000 ALTER TABLE `bookings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -154,7 +160,7 @@ CREATE TABLE `customers` (
   PRIMARY KEY (`customer_id`),
   KEY `login_id_idx` (`login_id`),
   CONSTRAINT `login_id` FOREIGN KEY (`login_id`) REFERENCES `login` (`login_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -163,7 +169,7 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT INTO `customers` VALUES (1,1,'John','Smith','john.smith@email.com','1234567890','123 Main St, City',NULL),(2,2,'Jane','Doe','jane.doe@email.com','9876543210','456 Elm St, Town',NULL),(3,3,'Michael','Johnson','michael@email.com','5555555555','789 Oak Ave, Village',NULL),(4,4,'Emily','Williams','emily@email.com','3333333333','567 Maple Rd, Hamlet',NULL);
+INSERT INTO `customers` VALUES (1,1,'John','Smith','john.smith@email.com','1234567890','123 Main St, City',NULL),(2,2,'Jane','Doe','jane.doe@email.com','9876543210','456 Elm St, Town',NULL),(3,3,'Michael','Johnson','michael@email.com','5555555555','789 Oak Ave, Village',NULL),(4,4,'Emily','Williams','emily@email.com','3333333333','567 Maple Rd, Hamlet',NULL),(5,17,'Anmol','Patil','anmolpatil.5241@gmail.com','9860098882','sdnkdaskasd','Male'),(8,20,'Ashwin','Ubare','ashwin.5241@gmail.com','9860098882','Gokhalenagar,Pune','Male'),(9,21,'Bhairavsing','Patil','bhairav.5241@gmail.com','9860098882','Gokhalenagar,Pune','Male'),(10,30,'Rupesh','Gholap','rupesh.5241@gmail.com','9860098882','jakdnsdnasjkdsa','Male'),(11,31,'Vipul','Belekar','vipul.5241@gmail.com','9860098882','sdnkdaskasd','Male'),(12,33,'Mohsin','Shaikh','mohsin@gmail.com','9373349241','Gokhalenagar,Pune','Male'),(13,36,'Shreenand','Patil','anmolpatil.5241@gmail.com','9922333087','Gokhalenagar,Pune','Male'),(16,41,'Arjun','Patil','ashwinubare@gmail.com','9922333087','jakdnsdnasjkdsa','Male');
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -180,7 +186,7 @@ CREATE TABLE `login` (
   `type_of_user` int DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`login_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -189,7 +195,7 @@ CREATE TABLE `login` (
 
 LOCK TABLES `login` WRITE;
 /*!40000 ALTER TABLE `login` DISABLE KEYS */;
-INSERT INTO `login` VALUES (1,'2023-08-01',1,'hash_cus'),(2,'2023-08-02',2,'hashed_salon_password'),(3,'2023-08-03',1,'hashed_customer_password'),(4,'2023-08-04',2,'hashed_salon_password'),(5,'22/02/2005',1,'password'),(6,'22/02/2005',1,'password'),(7,'22/02/2005',1,'password'),(8,'22/02/2005',1,'password'),(9,'22/02/2005',1,'password'),(10,'22/02/2005',1,'password'),(11,'23/08/2023 15:28:49',2,NULL),(12,'23/08/2023 18:27:01',2,'hashed_customer_password'),(13,'24/08/2023 01:10:28',2,'password'),(14,'24/08/2023 17:25:01',2,'password');
+INSERT INTO `login` VALUES (1,'2023-08-01',1,'hash_cus'),(2,'2023-08-02',2,'hashed_salon_password'),(3,'2023-08-03',1,'hashed_customer_password'),(4,'2023-08-04',1,'hashed_salon_password'),(5,'22/02/2005',1,'password'),(6,'22/02/2005',1,'password'),(7,'22/02/2005',1,'password'),(8,'22/02/2005',1,'password'),(9,'22/02/2005',1,'password'),(10,'22/02/2005',1,'password'),(11,'23/08/2023 15:28:49',2,NULL),(12,'23/08/2023 18:27:01',2,'hashed_customer_password'),(13,'24/08/2023 01:10:28',2,'password'),(14,'24/08/2023 17:25:01',2,'password'),(15,'26/08/2023 10:05:50',2,NULL),(16,'26/08/2023 10:06:12',2,NULL),(17,'26/08/2023 10:36:04',1,'Anmol@123'),(18,'26/08/2023 10:46:14',1,NULL),(19,'26/08/2023 10:46:34',1,NULL),(20,'26/08/2023 10:52:58',1,'Anmol@123'),(21,'26/08/2023 10:54:10',1,'Anmol@123'),(22,'26/08/2023 10:54:51',2,NULL),(23,'26/08/2023 10:55:07',2,NULL),(24,'26/08/2023 10:55:33',2,NULL),(25,'26/08/2023 10:59:22',2,'Anmol@123'),(26,'26/08/2023 11:03:08',2,'Anmol@123'),(27,'26/08/2023 11:03:31',2,'Anmol@123'),(28,'26/08/2023 11:04:32',2,'Anmol@123'),(29,'26/08/2023 11:04:55',2,'Anmol@123'),(30,'26/08/2023 12:20:56',1,'Anmol@123'),(31,'26/08/2023 14:22:05',1,'Anmol@123'),(32,'26/08/2023 14:22:05',3,'Bhai@123'),(33,'27/08/2023 13:14:00',1,'A@123'),(34,'27/08/2023 13:17:02',2,'B@123'),(35,'27/08/2023 13:17:05',2,'B@123'),(36,'27/08/2023 14:26:31',1,'221b#Bhairav'),(37,'27/08/2023 14:32:46',2,'221b#Bhai'),(41,'27/08/2023 16:40:18',1,'221b#Arjun'),(42,'27/08/2023 16:46:04',2,'221b#Excellent'),(43,'27/08/2023 16:46:46',2,'221b#Excellent'),(44,'27/08/2023 16:46:59',2,'221b#Excellent');
 /*!40000 ALTER TABLE `login` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -243,7 +249,7 @@ CREATE TABLE `salons` (
   KEY `city_ids_idx` (`city_id`),
   CONSTRAINT `city_ids` FOREIGN KEY (`city_id`) REFERENCES `cities` (`city_id`),
   CONSTRAINT `salon_isd` FOREIGN KEY (`login_id`) REFERENCES `login` (`login_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -252,7 +258,7 @@ CREATE TABLE `salons` (
 
 LOCK TABLES `salons` WRITE;
 /*!40000 ALTER TABLE `salons` DISABLE KEYS */;
-INSERT INTO `salons` VALUES (11,'Salon B',2,2,'Address B','email2@example.com','1438758327'),(12,'Salon A',1,1,'Address A','email1@example.com','1234567890'),(13,'Amol',7,1,'Apka Ghar','anmolpatil.5241@gmail.com','9860098882'),(14,'Amol',8,1,'Apka Ghar','anmolpatil.5241@gmail.com','9860098882'),(15,'Rupa',9,1,'Apka Ghar','anmolpatil.5241@gmail.com','9860098882'),(16,'Rupa',10,1,'Apka Ghar','anmolpatil.5241@gmail.com','9860098882'),(17,'Rupa',13,1,'Apka Ghar','anmolpatil.5241@gmail.com','9860098882'),(18,'Rupa',14,1,'Apka Ghar','anmolpatil.5241@gmail.com','9860098882');
+INSERT INTO `salons` VALUES (11,'Salon B',2,2,'Address B','email2@example.com','1438758327'),(12,'Salon A',1,1,'Address A','email1@example.com','1234567890'),(13,'Amol',7,1,'Apka Ghar','anmolpatil.5241@gmail.com','9860098882'),(14,'Amol',8,1,'Apka Ghar','anmolpatil.5241@gmail.com','9860098882'),(15,'Rupa',9,1,'Apka Ghar','anmolpatil.5241@gmail.com','9860098882'),(16,'Rupa',10,1,'Apka Ghar','anmolpatil.5241@gmail.com','9860098882'),(17,'Rupa',13,1,'Apka Ghar','anmolpatil.5241@gmail.com','9860098882'),(18,'Rupa',14,1,'Apka Ghar','anmolpatil.5241@gmail.com','9860098882'),(19,'Rupa',15,1,NULL,'anmolpatil.5241@gmail.com','9922333087'),(20,'Rupa',16,1,NULL,'anmolpatil.5241@gmail.com','9922333087'),(21,'Rupa',22,1,NULL,'shreenandwr@gmail.com','9860098882'),(22,'Rupa',23,1,NULL,'shreenandwr@gmail.com','9860098882'),(23,'Rupuesh',24,1,NULL,'shreenandwr@gmail.com','9860098882'),(24,'Rupuesh',25,1,NULL,'shreenandwr@gmail.com','9860098882'),(25,'Rupuesh',26,1,NULL,'shreenandwr@gmail.com','9860098882'),(26,'Rupuesh',27,1,NULL,'shreenandwr@gmail.com','9860098882'),(27,'Rupuesh',28,1,'Gokhalenagar,Pune','shreenandwr@gmail.com','9860098882'),(28,'Rupuesh',29,1,'Gokhalenagar,Pune','shreenandwr@gmail.com','9860098882'),(29,'Bhairav',34,1,'Gokhalenagar,Pune','bhairavsing221b@gmail.com','8600223636'),(30,'Bhairav',35,1,'Gokhalenagar,Pune','bhairavsing221b@gmail.com','8600223636'),(31,'HairSalon',37,1,'sdbdsnmdasbndm','anmolpatil.5241@gmail.com','9922333087'),(33,'Excellent',42,1,'Gokhalenagar,Pune','anmolpatil.1184@gmail.com','8600223636'),(34,'Excellent',43,1,'Gokhalenagar,Pune','anmolpatil.1184@gmail.com','8600223636'),(35,'Excellent',44,1,'Gokhalenagar,Pune','anmolpatil.1184@gmail.com','8600223636');
 /*!40000 ALTER TABLE `salons` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -345,4 +351,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-08-25 10:22:09
+-- Dump completed on 2023-09-01 22:21:52
